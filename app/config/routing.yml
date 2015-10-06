@@ -1,3 +1,7 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+test:
+    path: /test
+    defaults: {_controller: AppBundle:Default:test}

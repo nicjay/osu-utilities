@@ -2,17 +2,18 @@
 
 {% block body %}
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <a href="{{ path('test') }}">Return to Form Entry</a>
 
-   {# {% for entry in entries %}
-        <li>{{ entry.id }}</li>
-    {% endfor %}#}
-    <br><br>
+    <li>Entry submitted successfully</li>
 
-    <li>test</li>
+    <br>
 
+    {% for entry in entries %}
+        <li>{{ entry.id }}</li>\n
+        <li>{{ entry.date|date('Y-m-d') }}</li>
+        <li>{{ entry.rate }}</li>
+        <li>{{ entry.kilowatts }}</li>
+    {% endfor %}
 
 
 {% endblock %}

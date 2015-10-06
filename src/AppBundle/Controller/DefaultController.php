@@ -8,9 +8,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use AppBundle\Entity\MeterRead;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class DefaultController extends Controller
 {
+
     /**
      * @Route("/", name="homepage")
      */
@@ -27,12 +29,13 @@ class DefaultController extends Controller
      */
     public function newMeterRead(Request $request)
     {
+
+
         $meter_read = new MeterRead();
 /*        $meter_read->setId(19);
         $meter_read->setRate("$40");*/
 
         $form = $this->createFormBuilder($meter_read)
-            ->add('id', 'number')
             ->add('date', 'date')
             ->add('rate', 'number')
             ->add('kilowatts', 'number')
@@ -44,13 +47,27 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             // perform some action, such as saving the task to the database
 
+            $data = $form->getData();
+            $this->saveMeterRead($data);
+
+            /*array_push($this->meter_reads, $data);*/
+
             return $this->redirectToRoute('test/task_success');
+
         }
 
         return $this->render('default/meter_read_entry.html.twig', array(
             'form' => $form->createView(),
+            'entries' => array('test1', 'test2'),
             ));
 
+    }
+
+    public function saveMeterRead(MeterRead $meter_read)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($meter_read);
+        $em->flush();
     }
 
     /**
@@ -58,6 +75,21 @@ class DefaultController extends Controller
      */
     public function submitted()
     {
-        return new Response(" " );
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:MeterRead');
+
+        $query = $repository->createQueryBuilder('m')
+            ->getQuery();
+
+        $meter_reads = $query->getResult();
+
+      /*  $meter_read = $query->setMaxResults(1)->getOneOrNullResult();*/
+
+       /* return new Response("Entry successfully submitted ... {$meter_read->getRate()}");*/
+
+        return $this->render('default/meter_read_success_display.html.twig', array(
+            'entries' => $meter_reads,
+        ));
+
     }
 }
