@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/fields.html.twig' %}
+
+{% block body %}
+
+    <h1>Meter to Index Entry</h1><br>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+
+{% endblock %}

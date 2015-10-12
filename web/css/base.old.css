@@ -1,0 +1,105 @@
+/**
+ *
+ * Generic CSS for CakePHP
+ *
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @package       cake
+ * @subpackage    cake.app.webroot.css
+ * @since         CakePHP(tm)
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
+ */
+
+ul, li { list-style-type:none; padding:0; margin:0; }
+
+table.results {
+	background-color:#FFFFFF;
+	border:1px dotted #ccc;
+}
+table.results td, table.results th  {
+	vertical-align:top;
+	font-size:80%;
+}
+
+#content {
+	min-height:500px;
+}
+
+#ft {
+    padding: 10px;
+    border-top:dashed 1px #cfcfcf;
+}
+div#user-info {
+    background-color:#FAF9DE;
+    margin-top:10px;
+    margin-bottom:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-top:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+}
+
+
+#success-flash, .flash_success {
+  background-color:#EBFFE6;
+  border:solid 2px #155904;
+  color:#155904;
+  padding:5px;
+  font-size:.8em;
+}
+#error-flash, .flash_failure {
+  background-color:#FFF2F2;
+  border:solid 2px #800606;
+  color:red;
+  padding:5px;
+  font-size:.8em;
+}
+
+#breadcrumbs { border-bottom:1px solid #ccc; background-color:#fff; line-height: 20px; overflow:auto; font-size:11px; font-weight:bold; }
+#breadcrumbs li { float:left; padding-left:8px; }
+#breadcrumbs li a { padding:0 24px 2px 0; background:transparent url(../img/bread-arrow.png) no-repeat right center;}
+#breadcrumbs li a:link, #breadcrumbs li a:visited { text-decoration:none; color:#CCCCCC; }
+#breadcrumbs li a:hover, #breadcrumbs li a:focus { color:#0099CC; }
+#breadcrumbs li {color:#FF9900;}
+
+#reports ul, li { padding:1px; margin-left:5px; }
+
+.flash {
+	width:450px;
+	padding:15px;
+	color:#FFF;
+	font-weight:bold;
+	font-size:35px;
+}
+.flash_success {
+	background-color: #93DB70;
+	border:solid 1px #435D36;
+}
+
+
+.breadcrumbs {
+	font-size:12px;
+	margin-bottom:15px;
+}
+
+.results-header .title {
+	width:250px;
+	text-align:right;
+	vertical-align:top;
+}
+
+.new-column {
+	background-color:#FFFFE6;
+}
+textarea{
+	width: 600px
+}
+.datepicker {
+	width:80px;
+}

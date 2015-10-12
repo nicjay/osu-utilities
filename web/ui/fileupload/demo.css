@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/*
+ * jQuery File Upload Demo CSS 1.1.0
+ * https://github.com/blueimp/jQuery-File-Upload
+ *
+ * Copyright 2013, Sebastian Tschan
+ * https://blueimp.net
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
+
+.fileupload-progress {
+	margin: 10px 0;
+}
+.fileupload-progress .progress-extended {
+	margin-top: 5px;
+}

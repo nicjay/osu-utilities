@@ -1,0 +1,42 @@
+/**
+ * @file osu_news.css
+ *  Provide style for the OSU Events plugin for the Feeds Display module
+ */
+
+.live-feeds-block .news-item {
+  border-bottom: 1px dotted #888888;
+  clear: both;
+  margin-bottom: 1.5em;
+  overflow: auto;
+  padding-bottom: 1em;
+}
+
+.live-feeds-block .news-item  h3.title {
+  color: #000000
+  display: inline;
+  font-size: 0.93em;
+  margin: 0;
+  padding: 0;
+}
+
+.live-feeds-block .news-item img {
+    clear: left;
+    float: left;
+    margin-right: 10px;
+}
+
+
+.live-feeds-block .news-item .date
+{
+	color: #565656;
+	display: inline;
+	font-size: 0.93em;
+	font-style: italic;
+	text-wrap: ;
+	white-space: nowrap;
+}
+
+.live-feeds-block .news-item .news-body {
+  margin-top: .2em;
+  font-size: 0.93em;
+}

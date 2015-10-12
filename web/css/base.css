@@ -1,0 +1,106 @@
+body {
+	font-size:14px;
+}
+
+legend {
+	font-size:14px;
+	border:0;
+	margin-bottom:0;
+	width:auto;
+}
+fieldset {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #CCC;
+}
+#content h2 {
+	color:#373737;
+	font-family:'Gudea', Arial, Verdana, sans-serif;
+	font-size:2em;
+}
+
+#content h4 {
+	font-size:120%;
+	color:#373737;
+}
+#content ul {
+	margin-top:8px;
+}
+
+#content ul li {
+	list-style-image: url(../../images/bullet.png);
+	line-height: 20px;
+}
+#features {
+	margin-bottom:10px
+}
+
+#content-columns {
+	padding-top:10px;
+}
+
+.span4 .region {
+	border-top:solid 1px #BBB;
+}
+
+#directory {
+	float:right; 
+	background-color:#ddd; 
+	border:solid 1px #ccc;
+	padding:10px;
+	width:300px;
+	
+}
+
+#directory ul li {
+	list-style-image: url(../../images/bullet.png);
+	line-height: 20px;
+}
+
+.departmentDetail ul li {
+    padding:10px;
+	list-style-image: url(../../images/bullet.png);
+	line-height: 20px;
+}
+.departmentBox {
+    width:95%;
+    vertical-align:middle;
+    padding-left:35px;
+}
+
+ ul.departmentBox li {
+	list-style-image: url(../../images/bullet.png);
+    font-size:14px;
+}
+.departmentDetails {
+    padding-left:25px;
+}
+#breadcrumbs {
+	height:25px;
+}
+.breadcrumbs {
+	margin-top:-12px;
+	margin-left:-30px;
+	margin-bottom:10px;
+	line-height:20px;
+	font-family:"Arial","Helvetica",sans-serif;
+	color:#666666;
+
+}
+.breadcrumbs ul {
+	list-style-type: none outside none;
+	padding: 0px;
+	margin: 0px;
+	margin-left:15px;
+	padding-left:15px;
+}
+.breadcrumbs ul a {
+	text-decoration:none;
+}
+
+.breadcrumbs ul a:hover {
+	text-decoration:underline;
+}
+.breadcrumbs li {
+	display:inline;
+}

@@ -1,0 +1,101 @@
+/*
+	Coin Slider jQuery plugin CSS styles
+	http://workshop.rs/projects/coin-slider
+*/
+
+#features {
+	height:250px;
+}
+.coin-slider { overflow: hidden; zoom: 1; position: relative; }
+.coin-slider a{ text-decoration: none; outline: none; border: none; }
+.coin-slider a:hover { text-decoration: underline; outline: none;  }
+
+.cs-buttons { 
+	font-size: 0px; 
+	padding: 10px; 
+	background-color:rgba(244,244,244,0.5);
+}
+#cs-buttons-feature-stories {
+	position: absolute!important;
+	bottom:0px!important;
+	left:15px!important;
+	width:auto!important;
+}
+.cs-button-feature-stories {
+}
+.cs-buttons a { 
+	margin-top: 2px;
+	margin-bottom: 2px;
+	height: 14px; 
+	width: 14px; 
+	float: left; 
+	border: 1px solid #B8C4CF; 
+	color: #B8C4CF; 
+	text-indent: -1000px; 
+	margin-left:8px;
+	margin-right:8px;
+}
+.cs-active { background-color: #C34500; color: #000; }
+
+#cs-prev-feature-stories, #cs-next-feature-stories{
+	top:0px!important;
+	background-color:rgba(244,244,244,0.8);
+	border:solid 1px #CCC;
+	color:#000;
+}
+.cs-title strong {
+	display:block;
+	color: #C34500;
+	padding-bottom:2px;
+	margin-bottom:2px;
+	font-size:110%;
+}
+.cs-title { 
+	padding: 10px; 
+	color: #FFFFFF; 
+	position: absolute;
+	top: 0px!important;
+background-color:rgba(244,244,244,0.8);	
+	left: 70%!important;
+	z-index: 1000;
+	opacity: 1!important;
+}
+
+.cs-prev, 
+.cs-next {
+	background-color: #000000; 
+	color: #FFFFFF;
+	padding: 0px 10px;
+	display:none;
+}
+
+
+/** Coin Slider additional styles **/
+.cs-buttons a {
+    background: #CCC;
+    background: -webkit-linear-gradient(top,  #CCCCCC, #F3F3F3); /* webkit browsers */
+    background:    -moz-linear-gradient(top,  #CCCCCC, #F3F3F3); /* firefox 3.6+ */
+    background:      -o-linear-gradient(top,  #CCCCCC, #F3F3F3); /* opera */
+    background:     -ms-linear-gradient(top,  #CCCCCC, #F3F3F3); /* IE10 */
+    background:         linear-gradient(top,  #CCCCCC, #F3F3F3); /* css3 */      
+}
+a.cs-active {
+    background: #599BDC;
+    background: -webkit-linear-gradient(top,  #a7c4c9, #385e86); /* webkit browsers */
+    background:    -moz-linear-gradient(top,  #a7c4c9, #385e86); /* firefox 3.6+ */
+    background:      -o-linear-gradient(top,  #a7c4c9, #385e86); /* opera */
+    background:     -ms-linear-gradient(top,  #a7c4c9, #385e86); /* IE10 */
+    background:         linear-gradient(top,  #a7c4c9, #385e86); /* css3 */  
+    border: 1px solid #f5f2ed !important;
+}
+
+#cs-title-feature-stories {
+	border-left:solid 2px #DDD;
+	background-color:rgba(244,244,244,0.8);
+	color: #252525;
+    font-family: 'Gudea',Arial,Verdana,sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    width:30%!important;
+    overflow:visible;
+}

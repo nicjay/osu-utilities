@@ -1,3 +1,4 @@
+{#
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +8,179 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
+#}
+
+
+<!DOCTYPE HTML>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="http://fa.oregonstate.edu/sites/all/themes/doug_fir/favicon.ico" type="image/vnd.microsoft.icon" />
+    <title>Utility Management Project</title>
+
+        {% stylesheets
+            'css/drupal.css'
+            'ui/standard/1.0/base.css'
+            'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'
+            'css/jquery.multiselect.css'
+            'css/base.css'
+            'css/portal.css'
+            'css/forms.css'
+            'ui/css/drupal.css'
+            'ui/js/timepicker/jquery.timepicker.css'
+            'http://fonts.googleapis.com/css?family=Gudea:400,400italic,700'
+            '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
+        filter='cssrewrite' output='css/compiled/app.css' %}
+        <link rel="stylesheet" type="text/css" href="{{ asset_url }}" media="all" />
+        {% endstylesheets %}
+
+    <!-- CSS -->
+
+      {#  <link rel="stylesheet" href="css/drupal.css">
+        <link rel="stylesheet" href="ui/standard/1.0/base.css">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="css/jquery.multiselect.css" />
+        <link rel="stylesheet" href="css/base.css"/>
+        <link rel="stylesheet" href="css/portal.css" />
+        <link rel="stylesheet" href="css/forms.css" />
+        <link rel="stylesheet" href="ui/css/drupal.css" />
+        <link rel="stylesheet" href="ui/js/timepicker/jquery.timepicker.css" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Gudea:400,400italic,700" />
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+#}
+
+</head>
+
+<body>
+
+<!-- OSU Top Hat -->
+
+<!-- Top-Hat -->
+<div id='osu-top-hat'><div class='container'><a href='http://oregonstate.edu' class='tag'><img src='http://fa.oregonstate.edu/sites/all/modules/osu_top_hat/images/osu-tag.png' class='logo' alt='Oregon State University' /><span class='mobile-header'>OREGON STATE UNIVERSITY</span></a><ul class="menu"><li class="first leaf"><a href="http://calendar.oregonstate.edu">Calendar</a></li>
+            <li class="leaf"><a href="http://osulibrary.oregonstate.edu">Library</a></li>
+            <li class="leaf"><a href="http://oregonstate.edu/campusmap">Maps</a></li>
+            <li class="leaf"><a href="http://oregonstate.edu/main/online-services">Online Services</a></li>
+        </ul> <div class="region region-nav">
+          {#  <div style="" id="login-info" class="block block-nice-menus">
+                <div>
+                    <ul class="nice-menu nice-menu-down menu-path-front">
+                        <li class="menuparent" ><a href="#" id="login-username" onclick="return false">Nicholas Jordan</a>          <ul class="menu-path-front">
+                                <!--            <li class=""><a href="/jordann/portal/surplus/edit/397/add">User Preferences</a></li>-->
+                                <li class="last"><a href="/jordann/portal/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>    </div>#}
+        </div>
+    </div></div><div id="mobile-icon-menu">
+    <a href='#' id="toggle-mobile-menu" class="m-icon-link"><i class="icon-reorder"></i></a>
+    <a href='/search/osu' id="mobile-search-link" class="m-icon-link"><i class="icon-search"></i></a>
+</div>
+
+<div id='page-wrapper' class='container'>
+
+    <!-- Site Name -->
+    <div id="header" class='row-fluid' style="max-height:80px;">
+
+        <a class="parent" href="http://fa.oregonstate.edu">Specialized Administrative Services</a>
+
+        <h1><a href="/jordann/portal/surplus">Utility Management Project</a></h1>
+
+    </div>
+
+    <!-- Main menu navbar -->
+    <div id="main-menu" role="navigation">
+        <div class="region region-nav">
+            <div id="block-nice-menus-1" class="block block-nice-menus">
+
+                <div class="content">
+                    <ul class="nice-menu nice-menu-down menu-path-front"  id="nice-menu-1"><li class=" first"><a href="/">Home</a></li>
+                        <li class=" menuparent"><a href="/meter/add">Sustainability</a><ul id="nice-menu-2" class="menu-path-front">
+                                <li class=""><a href="/meter/add">Add Meter</a></li>
+                                <li class=""><a href="/meter/view">View Meters</a></li>
+                                <li class=""><a href="/meter/note/add">Add Meter Note</a></li>
+                                <li class=" last"><a href="/meter/read/add">Add Meter Read</a></li>
+                            </ul>
+                        </li>
+                        <li class=" menuparent"><a href="/finance">Finance</a><ul id="nice-menu-2" class="menu-path-front">
+                                <li class=""><a href="/finance/meterToIndex/add">Add - Meter to Index</a></li>
+                                <li class=""><a href="/finance/rateAdjustment/add">Add - Rate Adjustment</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div> <!-- /#main-menu -->
+
+
+
+    <!-- Full width top region -->
+
+
+    <!-- Now divide into main column and right sidebar -->
+    <div class="row">
+        <div class="span12">
+            <!-- Features -->
+            <div class="row">
+                <!-- Main content and middle sidebar -->
+                <div class="span12">
+
+
+                    {% block body %}{% endblock %}
+                    {% block javascripts %}{% endblock %}
+
+
+                </div>
+                <!-- Content area -->
+
+                <!-- Middle Sidebar -->
+            </div>
+        </div> <!-- /Main Columns -->
+
+        <!-- Right Sidebar - sidebar_first -->
+
+    </div> <!-- /main-body-row -->
+
+    <!-- Full width above footer -->
+
+</div> <!-- /container -->
+
+<!-- Page Footer -->
+
+<div id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="span6 contact">
+                <h3>Contact Info</h3>
+                {#<div class="specific-contact">
+                    <div class="specific-contact"><a href="https://www.google.com/maps?ll=44.561378,-123.272602&z=15&t=m&hl=en-US&gl=US&mapclient=embed&q=644+SW+13th+St+Corvallis,+OR+97333">Surplus Property<br />644 SW 13th Street<br />
+                            Corvallis, OR 97331</a></div><div class="specific-contact">Phone: 541-737-7347<br /><a href="mailto:surplus@oregonstate.edu"> surplus@oregonstate.edu</a><br /></div>
+                </div>#}
+                <div class="general-contact">
+                    <a href="http://oregonstate.edu/copyright">Copyright</a>
+                    &copy;2015 Oregon State University<br />
+                    <a href="http://oregonstate.edu/disclaimer">Disclaimer</a>
+                </div>
+                <div class="social-media"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script style="display:none;">
+    $(document).ready(function(){
+        $("input[type='text'].clickSelect,input[type='textarea'].clickSelect").on("click", function () {
+            $(this).select();
+        });
+    });
+</script>
+<!-- /Page Footer -->
+</html>
+

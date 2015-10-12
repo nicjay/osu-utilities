@@ -1,0 +1,231 @@
+/**
+ * @file
+ *  feature-story.css
+ *
+ *
+ * Feature story CSS
+ */
+
+/* Main rotating areas ***************************************************/
+
+/* FULL WIDTH SECTION (no sidebars) */
+#full-top {
+  position: relative;
+  top: 6px;
+} 
+
+/* Most common position (right sidebar present) */
+#features {
+  background: transparent;
+  position: relative;
+  /* top: 4px; */
+}
+
+/* Common to most positions */
+#block-views-feature-story-block .inactive {
+  position: absolute;
+  left: -999em;
+}
+.superactive { height: 200px; }
+.lactive { height: 40px; }
+
+#block-views-feature-story-block .content {
+  padding: 0;
+  margin: 0;
+  max-height: 470px;
+  overflow: hidden;
+}
+
+.ie8 .front #features img {
+  width: 795px;
+  height: 375px;
+}
+
+#block-views-feature-story-block .view-feature-story .views-field-field-caption {
+  /* for a responsive layour we'll need to change back to relative position
+   * or add break points to change that position */
+  position: absolute;
+  bottom: 0;
+  background-color: #fff;
+  background-color: rgba(255,255,255,.8);
+  overflow: hidden;
+  max-height: 150px;
+  width: 100%;
+}
+
+.ie #block-views-feature-story-block .view-feature-story .views-field-field-caption {
+  filter: alpha(opacity = 80);
+}
+
+#block-views-feature-story-block .view-feature-story .views-field-field-picture img {
+  max-width: 100%;
+  height: auto; /* overwrites height in html */
+}
+
+#block-views-feature-story-block .view-feature-story .views-field-field-caption .field-content {
+  padding: .5em 1em;
+}
+
+#block-views-feature-story-block .view-feature-story .views-field-field-caption .fs-title a,
+#block-views-feature-story-block .view-feature-story .views-field-field-caption .fs-title {
+  font-family: 'Eksja', 'Gudea', arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 4px;
+  color: #c34500;
+  text-decoration: none;
+  line-height: 22px;
+}
+
+#block-views-feature-story-block .view-feature-story .views-field-field-caption .fs-title a:hover,
+#block-views-feature-story-block .view-feature-story .views-field-field-caption .fs-title a:active,
+#block-views-feature-story-block .view-feature-story .views-field-field-caption .fs-title a:focus {
+  text-decoration: underline;
+}
+
+html.js .view-feature-story a.views-throbbing,
+html.js .view-feature-story span.views-throbbing {
+  background: none;
+  padding-right: 0;
+}
+
+#block-views-feature-story-block .view-feature-story .more-link {
+  position: absolute;
+  display: block;
+  bottom: 6px;
+  right: 25px;
+  background-color: #f2f2f2;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #eee;
+  z-index: 3;
+  width: 75px;
+  padding: 0 .2em .2em 0;
+  text-align: center;
+  box-shadow: 0 1px 2px #ccc;
+}
+
+#block-views-feature-story-block .view-feature-story .more-link a {
+  color: #252525;
+  font-size: 80%;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+}
+
+#block-views-feature-story-block .view-feature-story .more-link a:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* Arrow Controls: Forward / Back controls */
+.view-feature-story .side-controls {
+  background-color: #333;
+  color: #fff;
+  font-size: 30px;
+  padding-top: 20px;
+  width: 25px;
+  height: 45px;
+  position: absolute;
+  top: 40%;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: .6;
+}
+
+.view-feature-story .side-controls:hover,
+.view-feature-story .side-controls:active,
+.view-feature-story .side-controls:focus {
+  background: #676767;
+  opacity: .8;
+}
+
+.view-feature-story .side-controls:hover i {
+  text-shadow: 0 1px 2px #000;
+}
+
+.view-feature-story .next {
+  right: 0;
+  text-align: right;
+  padding-left: 6px;
+  padding-right: 14px;
+}
+
+.view-feature-story .previous {
+  left: 0;
+  padding-left: 14px;
+  padding-right: 6px;
+}
+/* end arrow controls */
+
+/* LIVE */
+.view-feature-story.view-display-id-block .fs-row .views-field-field-caption .fs-title {
+  margin: 0 100px 8px 0;
+}
+
+.view-feature-story.view-display-id-block .fs-row .views-field-field-caption {
+  height: 40px;
+  -webkit-transition: height 0.8s ease;
+  -moz-transition: height 0.8s ease;
+  transition: height 0.8s ease;
+}
+
+.view-feature-story.view-display-id-block .fs-row:hover .views-field-field-caption {
+  height: 135px;
+}
+
+
+/* Page View (All Stories) ***************************************************/
+
+.view.view-feature-story.view-id-feature_story.view-display-id-page .views-row {
+  clear: left;
+  margin-bottom: 1.5em;
+}
+
+.view.view-feature-story.view-id-feature_story.view-display-id-page .views-field-field-picture img {
+  float: left;
+  margin: 5px 1em 1em 0;
+}
+
+.view.view-feature-story.view-id-feature_story.view-display-id-page .fs-title a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Single Story Page View ***************************************************/
+
+.node-type-feature-story .field-name-field-picture {
+  margin-bottom: 10px;
+}
+
+
+/* Sidebar Teaser ***************************************************/
+
+.view.view-feature-story.view-id-feature_story.view-display-id-block_1 .view-content > div {
+  padding-bottom: 1.2em;
+}
+
+.view.view-feature-story.view-id-feature_story.view-display-id-block_1 .field-content a {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#block-views-feature-story-block-1 .views-field-title {
+  margin-top: 4px;
+}
+
+#block-views-feature-story-block-1 .view-content > div {
+  border-bottom: 1px solid #ccc;
+  padding: 16px 0 13px;
+}
+
+#block-views-feature-story-block-1 .view-content > div:first-child {
+  padding-top: 5px;
+}
+ 
+#block-views-feature-story-block-1 .view-content > div:last-child {
+  border-bottom: none;
+} 

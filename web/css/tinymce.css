@@ -1,0 +1,14 @@
+html {
+  background-color: #FFF;
+}
+body {
+  background: none;
+  padding:10px;
+}
+.mce-tinymce{
+	padding-left:0!important;
+	margin-left:164px!important;
+}
+pre {
+	display:none;
+}

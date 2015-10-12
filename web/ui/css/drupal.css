@@ -1,0 +1,236 @@
+.help-information {
+	padding-left:4px;
+	padding-right:4px;
+	padding-bottom:2px;
+}
+.ui-front {
+	z-index:1000;
+}
+
+.breadcrumbs {
+	background-color: transparent!important; 
+	margin-top:0;
+}
+.flash {
+	margin-bottom:20px;
+	text-align:left;
+}
+
+
+body {
+	background-color:#FFF;
+}
+
+
+#content .region {
+	border-top:none;
+}
+#content .block h3 {
+	background: none repeat scroll 0 0 #666;
+	border-radius: 3px 3px 0 0;
+	color: #ffffff;
+	font-family: 'Gudea',Arial,Helvetica,Verdana,sans-serif;
+	font-size: 16px !important;
+	font-weight: normal !important;
+	line-height: 30px;
+	margin-bottom: 18px;
+	padding: 0 10px;
+}
+#content h2 {
+	color:#666;
+	font-family: 'EksjaExtremesRegular', Arial, Helvetica, Verdana, sans-serif;
+	font-size: 22px;
+}
+#content #content-columns {
+	padding:0;
+}
+
+
+#login-info {
+	margin-top: 0;
+	width: 200px;
+	position: relative;
+    top: 8px;
+	font-size:90%;
+	color:#FFF;
+	vertical-align:middle;
+	float:right;
+}
+
+#login-info li {
+}
+
+#login-info .nice-menu {
+
+}
+#login-info .menu,
+#login-info .nice-menu {
+  z-index: 300;
+  float:right;
+  width:200px;
+  /* avoids conflicts with nice-menus in right hand side */
+
+  font-size: 14px;
+}
+#login-info .nice-menu li {
+  z-index: 300;
+  }
+#login-info .content {
+  padding: 0;
+}
+#login-info .menu {
+  min-height: 38px;
+}
+.ie7 #login-info .nice-menu,
+.ie7 #login-info .menu {
+  min-height: 25px;
+}
+#login-info .menu li,
+#login-info .nice-menu > li {
+  float: left;
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  border: none;
+}
+#login-info .menu li a,
+#login-info .nice-menu > li > a {
+  display: inline-block;
+  color: #fff;
+  padding: 10px 16px;
+  text-decoration: none;
+}
+#login-info .nice-menu a,
+#login-info .nice-menu a:visited {
+  color: #fff;
+}
+/* Nice Menu Overwrites *******************************************************/
+/* Reset default nice-menu graphics, backgrounds  and spacing*/
+#login-info .nice-menu > ul {
+  top: 2.3em;
+  /* CRUCIAL to remove for other themes */
+
+}
+ul.nice-menu ul {
+  border: 0;
+  /* removes top 1px border that comes with default nice-menus */
+
+}
+#login-info ul.nice-menu-down li,
+#login-info ul.nice-menu-down li:hover,
+#login-info ul.nice-menu-down li.menuparent,
+#login-info ul.nice-menu-down li.menuparent:hover {
+  background-color: transparent;
+  background-image: none;
+}
+/* Width of Nice Menu Elements, adjustments */
+ul.nice-menu ul li {
+  width: 14em;
+  /* needs to match number below */
+
+}
+ul.nice-menu-down li ul li ul {
+  left: 14em;
+  /* need to match number above */
+
+}
+/* Nice Menu Multi Level Stylings (and level 1 menu styling) **********************************************/
+/* Level 1 */
+#login-info .nice-menu > li.last > a,
+#login-info .menu li.last a {
+  border-right: none;
+}
+#login-info .nice-menu > li.menuparent > a {
+  background: url('images/h-menu-arrow-down.png') right center no-repeat;
+  padding-right: 32px;
+}
+#login-info .nice-menu > li.menuparent:hover > a,
+#login-info .nice-menu > li.menuparent > a:hover,
+#login-info .nice-menu > li.menuparent > a:active,
+#login-info .nice-menu > li.menuparent > a:focus {
+  background-color: #4b4b4b;
+}
+#login-info .nice-menu > li.over > a,
+#login-info .nice-menu > li > a:hover,
+#login-info .nice-menu > li > a:active,
+#login-info .nice-menu > li > a:focus,
+#login-info .menu li a:hover,
+#login-info .menu li a:active,
+#login-info .menu li a:focus {
+  color: #fff;
+  background-color: #4b4b4b;
+}
+/* Level 2 */
+#login-info .nice-menu > li > ul {
+  margin-top: 13px;
+  background-color: #5c5c5c;
+}
+#login-info .nice-menu > li > ul > li > a:hover,
+#login-info .nice-menu > li > ul > li > a:active,
+#login-info .nice-menu > li > ul > li > a:focus {
+  color: #fff;
+}
+#login-info .nice-menu li li.menuparent > a {
+  padding-right: 24px;
+  /* width: 160px; */
+  background: url('images/h-menu-arrow-right.png') no-repeat 97% center;
+}
+#login-info .nice-menu li li.menuparent > a:hover,
+#login-info .nice-menu li li.menuparent > a:active,
+#login-info .nice-menu li li.menuparent > a:focus {
+  background-image: url('images/h-menu-arrow-right-hover.png');
+}
+#login-info .nice-menu ul {
+  padding: 8px;
+  overflow: hidden;
+}
+#login-info .nice-menu li li {
+  border: none;
+  padding: 4px 0;
+  margin-right: 6px;
+}
+#login-info .nice-menu li li a {
+  text-decoration: none;
+}
+#login-info .nice-menu li li a:hover,
+#login-info .nice-menu li li a:active,
+#login-info .nice-menu li li a:focus,
+#login-info .nice-menu li li.over a {
+  background-color: #4b4b4b;
+}
+/* Level 3 */
+#login-info .nice-menu ul ul {
+  border: none;
+  margin-left: -5px;
+}
+#login-info .nice-menu ul ul,
+#login-info .nice-menu li li.over li a {
+  background-color: #626262;
+}
+#login-info .nice-menu li li.over li a:hover,
+#login-info .nice-menu li li.over li a:active,
+#login-info .nice-menu li li.over li a:focus,
+#login-info .nice-menu li li li.over a {
+  background-color: #4b4b4b;
+}
+/* Level 4 */
+#login-info .nice-menu ul ul ul,
+#login-info .nice-menu li li li.over li a {
+  background-color: #696969;
+}
+#login-info .nice-menu li li li.over li a:hover,
+#login-info .nice-menu li li li.over li a:active,
+#login-info .nice-menu li li li.over li a:focus,
+#login-info .nice-menu li li li li.over a {
+  background-color: #4b4b4b;
+}
+#login-info #login-username:before {
+	content: "\f007";
+	font-family: "FontAwesome";
+	padding-right: 10px;
+	color:#a7c4c9;
+}
+
+#main-menu .menu, #main-menu .nice-menu {
+	z-index:5;
+}

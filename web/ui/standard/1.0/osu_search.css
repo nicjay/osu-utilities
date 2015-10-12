@@ -1,0 +1,113 @@
+﻿/* OSU Search styling */
+
+
+
+/* OSU Search Results Styling */
+form#osu-search-form div.form-radios div.form-item {
+  display: inline;
+}
+
+dd.osu-search-result-url {
+  color: #666;
+  margin-bottom: 0.7em;
+  font-style: italic;
+}
+
+div.n { /* bottom pagination */
+    padding-top: 1.5em; 
+}
+
+#querystats { /* Search result query information (top of search results) */
+    margin-top: 0.8em;
+    margin-bottom: 0;
+}
+
+div.n td,
+#querystats td {
+  border: none;
+  padding: 0;
+}
+
+/*  Top Hat search form */
+#osu-top-hat #osu-search-top-hat-form {
+  width: 200px;
+  position: relative;
+}
+
+#osu-top-hat #osu-search-top-hat-form label,
+#osu-top-hat #osu-search-top-hat-form input {
+  font-size: 90%;
+}
+
+#osu-top-hat #osu-search-top-hat-form label {
+  padding: 0 .2em;
+  margin-top: 1em;
+  color: #fff;
+}
+
+#osu-top-hat #osu-search-top-hat-form .form-submit {
+  height: 26px;
+  width: 40px;
+  background: url('search_icon_white.png') 10px 4px no-repeat #c34500;
+  box-shadow: none;
+  border: none;
+  float: right;
+  border-radius: 0 12px 12px 0;
+  /* border: 1px solid #151515;
+  border-left: none; */
+  margin: 0;
+}
+
+#osu-top-hat #osu-search-top-hat-form .form-submit {
+  position: absolute;
+  right: 0;
+}
+
+.ie #osu-top-hat #osu-search-top-hat-form .form-submit {
+  filter: none;
+}
+
+#osu-top-hat .form-item {
+  display: inline-block;
+}
+
+.ie7 #osu-top-hat .form-type-textfield {
+  display: inline;
+}
+
+#osu-top-hat .search-terms {
+  position: absolute;
+  right: 40px;
+  top: 0;
+  height: 22px;
+  margin: 0;
+  padding: 2px 0 0 6px;
+  font-size: 13px;
+  background: #f2f2f2;
+  /* border: 1px solid #151515; */
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 1px 0 rgba(255, 255, 255, 0.15); */
+  border-radius: 14px;
+  color: #252525;
+  width: 100px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  border-radius: 12px 0 0 12px;
+  -moz-transition: all 1.5s ease;
+  -webkit-transition: all 1.5s ease; 
+  transition: all 1.5s ease;
+}
+
+#osu-top-hat .search-terms:focus {
+  width: 140px;
+  background: #fff;
+ /* box-shadow: 0 0 3px rgba(255, 255, 255, 0.55); */
+}
+
+#osu-top-hat .form-type-checkbox {
+  text-align: right;
+  display: block;
+  margin: -6px 0 0;
+}
+
+.ie7 #osu-top-hat .form-type-checkbox {
+  margin-top: 0;
+}

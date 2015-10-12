@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="meter_read")
+ * @ORM\Table(name="util_meter_read")
  */
 class MeterRead
 {
