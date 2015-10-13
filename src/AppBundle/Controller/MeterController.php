@@ -68,7 +68,6 @@ class MeterController extends Controller
         return $this->render(
             'default/meter_entry.html.twig', array(
             'form' => $form->createView(),
-            'entries' => array('test1', 'test2'),
             ));
 
     }
