@@ -67,6 +67,30 @@ class FinanceController extends Controller
     }
 
     /**
+     * @Route("/finance/meterToIndex/view", name="meterToIndexView")
+     */
+    public function viewMeterToIndex(Request $request){
+
+        // for list testing
+        $meter_to_index = new MeterToIndex();
+
+        $meter_to_index->setMeterId("ABCDEF");
+        $meter_to_index->setIndex("123456");
+        $meter_to_index->setStartDate("1/1/2015");
+        $meter_to_index->setEndDate("1/30/2015");
+
+        $meter_to_indexes = array($meter_to_index, $meter_to_index, $meter_to_index, $meter_to_index);
+
+        //
+        return $this->render(
+            'default/meter_to_index_view.html.twig', array(
+            'entries' => $meter_to_indexes,
+        ));
+    }
+
+
+
+    /**
      * @Route("/finance/rateAdjustment/add", name="rateAdjustmentAdd")
      */
     public function newRateAdjustment(Request $request)
@@ -91,7 +115,7 @@ class FinanceController extends Controller
 
             /*array_push($this->meter_reads, $data);*/
 
-            /* return $this->redirectToRoute('meterView');*/
+            return $this->redirectToRoute('rateAdjustmentView');
 
         }
 
@@ -101,6 +125,29 @@ class FinanceController extends Controller
         ));
 
 
+    }
+
+    /**
+     * @Route("/finance/rateAdjustment/view", name="rateAdjustmentView")
+     */
+    public function viewRateAdjustment(Request $request){
+
+        // for list testing
+        $rate_adjustment = new RateAdjustment();
+
+        $rate_adjustment->setInvoiceMonth(2);
+        $rate_adjustment->setInvoiceYear(2015);
+        $rate_adjustment->setUtilityType("Electrical");
+        $rate_adjustment->setDescription("A description of this rate adjustment.");
+        $rate_adjustment->setStartDate("1/1/2015");
+
+        $rate_adjustments = array($rate_adjustment, $rate_adjustment, $rate_adjustment, $rate_adjustment);
+
+            //
+        return $this->render(
+            'default/rate_adjustment_view.html.twig', array(
+            'entries' => $rate_adjustments,
+        ));
     }
 
 }

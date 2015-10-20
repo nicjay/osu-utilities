@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<a href="{{ path('meterAdd') }}">Return to Form Entry</a>
+
+<h1>Meter Entries</h1><br>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Properties</th>
+        <th>Size</th>
+        <th>Description</th>
+        <th>Owned By</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    {% for entry in entries %}
+    <tr>
+        <td>{{ entry.id }}</td>
+        <td>{{ entry.type }}</td>
+        <td>{{ entry.property }}{{ entry.property2 }}{{ entry.property3 }}</td>
+        <td>{{ entry.size }}</td>
+        <td>{{ entry.description }}</td>
+        <td>{{ entry.ownedBy }}</td>
+        <td>[<a href="/">Edit</a>]</td>
+        <td>[<a href="/">Delete</a>]</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

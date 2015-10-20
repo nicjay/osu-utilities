@@ -82,21 +82,36 @@ class MeterController extends Controller
     /**
      * @Route("meter/view", name="meterView")
      */
-    public function submitted()
+    public function viewMeter(Request $request)
     {
-        $repository = $this->getDoctrine()
+        //Get from database
+       /* $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Meter');
 
         $query = $repository->createQueryBuilder('m')
             ->getQuery();
 
-        $meter_entries = $query->getResult();
+        $meter_entries = $query->getResult();*/
 
-      /*  $meter_read = $query->setMaxResults(1)->getOneOrNullResult();*/
 
-       /* return new Response("Entry successfully submitted ... {$meter_read->getRate()}");*/
+        /*  $meter_read = $query->setMaxResults(1)->getOneOrNullResult();*/
 
-        return $this->render('default/meter_read_success_display.html.twig', array(
+        /* return new Response("Entry successfully submitted ... {$meter_read->getRate()}");*/
+
+        //List testing
+        $meter_entry = new Meter();
+        $meter_entry->setType("Electrical");
+        $meter_entry->setProperty("Oak Creek");
+        $meter_entry->setProperty2("Reser Stadium");
+        $meter_entry->setSize("1M^2");
+        $meter_entry->setDescription("This is a description of a meter.");
+        $meter_entry->setOwnedBy("Nick Jordan");
+
+        $meter_entries = array($meter_entry, $meter_entry, $meter_entry);
+
+
+        return $this->render(
+            'default/meter_view.html.twig', array(
             'entries' => $meter_entries,
         ));
 

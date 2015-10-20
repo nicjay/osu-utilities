@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <a href="{{ path('meterToIndexAdd') }}">Return to Form Entry</a>
+    <h1>Meter to Index Entries</h1><br>
+
+    <table>
+        <tr>
+            <th>Meter ID</th>
+            <th>Index</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry.meterId }}</td>
+                <td>{{ entry.index }}</td>
+                <td>{{ entry.startDate }}</td>
+                <td>{{ entry.endDate }}</td>
+                <td>[<a href="/">Edit</a>]</td>
+                <td>[<a href="/">Delete</a>]</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}

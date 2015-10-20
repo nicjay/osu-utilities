@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <a href="/finance/rateAdjustment/add">Return to Form Entry</a>
+    <h1>Rate Adjustments</h1><br>
+
+    <table>
+        <tr>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Utility Type</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry.invoiceMonth }}</td>
+                <td>{{ entry.invoiceYear }}</td>
+                <td>{{ entry.utilityType }}</td>
+                <td>{{ entry.description }}</td>
+                <td>{{ entry.startDate }}</td>
+                <td>[<a href="/">Edit</a>]</td>
+                <td>[<a href="/">Delete</a>]</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
