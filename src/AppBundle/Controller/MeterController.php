@@ -85,13 +85,13 @@ class MeterController extends Controller
     public function viewMeter(Request $request)
     {
         //Get from database
-       /* $repository = $this->getDoctrine()
+        $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Meter');
 
         $query = $repository->createQueryBuilder('m')
             ->getQuery();
 
-        $meter_entries = $query->getResult();*/
+        $meter_entries = $query->getResult();
 
 
         /*  $meter_read = $query->setMaxResults(1)->getOneOrNullResult();*/
@@ -99,7 +99,7 @@ class MeterController extends Controller
         /* return new Response("Entry successfully submitted ... {$meter_read->getRate()}");*/
 
         //List testing
-        $meter_entry = new Meter();
+      /*  $meter_entry = new Meter();
         $meter_entry->setType("Electrical");
         $meter_entry->setProperty("Oak Creek");
         $meter_entry->setProperty2("Reser Stadium");
@@ -107,7 +107,7 @@ class MeterController extends Controller
         $meter_entry->setDescription("This is a description of a meter.");
         $meter_entry->setOwnedBy("Nick Jordan");
 
-        $meter_entries = array($meter_entry, $meter_entry, $meter_entry);
+        $meter_entries = array($meter_entry, $meter_entry, $meter_entry);*/
 
 
         return $this->render(
