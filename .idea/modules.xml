@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/SymfonyNew.iml" filepath="$PROJECT_DIR$/.idea/SymfonyNew.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/UtilityManagement.iml" filepath="$PROJECT_DIR$/.idea/UtilityManagement.iml" />
     </modules>
   </component>
 </project>

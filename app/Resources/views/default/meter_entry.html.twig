@@ -1,14 +1,30 @@
 {% extends 'base.html.twig' %}
-
-{% form_theme form 'form/fields.html.twig' %}
+{#
+{% form_theme form 'form/fields.html.twig' %}#}
 
 {% block body %}
 
 <h1>Meter Entry</h1><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Form Entry</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td rowspan="4">{{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}</td>
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-{{ form_end(form) }}
+
+
+        </tr>
+
+
+        </tbody>
+    </table>
+
 
 
 {% endblock %}

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="util_rate_adjustment")
+ * @ORM\Table(name="util_rate_adjustment_dev", schema="sym")
  */
 class RateAdjustment
 {

@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="util_meter")
+ * @ORM\Table(name="utility_meters_dev", schema="sym")
  */
 class Meter
 {
@@ -18,39 +18,86 @@ class Meter
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(name="utility_type", type="string", length=50, nullable=true)
      */
-    private $type;
+    private $utilityType;
 
     /**
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $property;
+    private $name;
 
     /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $property2;
-
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $property3;
-
-    /**
-     * @ORM\Column(type="string", length=128)
-     */
-    private $size;
-
-    /**
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=128)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $ownedBy;
+    private $external_id;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $external_system_name;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $owned_by;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $property_id_1;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $property_id_2;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $property_id_3;
+
+    /**
+     * @ORM\Column(type="datetime", scale=8, nullable=true)
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $created_by;
+
+    /**
+     * @ORM\Column(type="datetime", scale=8, nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $modified_by;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $multiplier;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false)
+     */
+    private $is_active;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $meter_location;
+
+
 
 
     /**
@@ -64,123 +111,51 @@ class Meter
     }
 
     /**
-     * Set type
+     * Set utilityType
      *
-     * @param string $type
+     * @param string $utilityType
      *
      * @return Meter
      */
-    public function setType($type)
+    public function setUtilityType($utilityType)
     {
-        $this->type = $type;
+        $this->utilityType = $utilityType;
     
         return $this;
     }
 
     /**
-     * Get type
+     * Get utilityType
      *
      * @return string
      */
-    public function getType()
+    public function getUtilityType()
     {
-        return $this->type;
+        return $this->utilityType;
     }
 
     /**
-     * Set property
+     * Set name
      *
-     * @param string $property
+     * @param string $name
      *
      * @return Meter
      */
-    public function setProperty($property)
+    public function setName($name)
     {
-        $this->property = $property;
+        $this->name = $name;
     
         return $this;
     }
 
     /**
-     * Get property
+     * Get name
      *
      * @return string
      */
-    public function getProperty()
+    public function getName()
     {
-        return $this->property;
-    }
-
-    /**
-     * Set property2
-     *
-     * @param string $property2
-     *
-     * @return Meter
-     */
-    public function setProperty2($property2)
-    {
-        $this->property2 = $property2;
-    
-        return $this;
-    }
-
-    /**
-     * Get property2
-     *
-     * @return string
-     */
-    public function getProperty2()
-    {
-        return $this->property2;
-    }
-
-    /**
-     * Set property3
-     *
-     * @param string $property3
-     *
-     * @return Meter
-     */
-    public function setProperty3($property3)
-    {
-        $this->property3 = $property3;
-    
-        return $this;
-    }
-
-    /**
-     * Get property3
-     *
-     * @return string
-     */
-    public function getProperty3()
-    {
-        return $this->property3;
-    }
-
-    /**
-     * Set size
-     *
-     * @param string $size
-     *
-     * @return Meter
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-    
-        return $this;
-    }
-
-    /**
-     * Get size
-     *
-     * @return string
-     */
-    public function getSize()
-    {
-        return $this->size;
+        return $this->name;
     }
 
     /**
@@ -208,6 +183,54 @@ class Meter
     }
 
     /**
+     * Set externalId
+     *
+     * @param string $externalId
+     *
+     * @return Meter
+     */
+    public function setExternalId($externalId)
+    {
+        $this->external_id = $externalId;
+    
+        return $this;
+    }
+
+    /**
+     * Get externalId
+     *
+     * @return string
+     */
+    public function getExternalId()
+    {
+        return $this->external_id;
+    }
+
+    /**
+     * Set externalSystemName
+     *
+     * @param string $externalSystemName
+     *
+     * @return Meter
+     */
+    public function setExternalSystemName($externalSystemName)
+    {
+        $this->external_system_name = $externalSystemName;
+    
+        return $this;
+    }
+
+    /**
+     * Get externalSystemName
+     *
+     * @return string
+     */
+    public function getExternalSystemName()
+    {
+        return $this->external_system_name;
+    }
+
+    /**
      * Set ownedBy
      *
      * @param string $ownedBy
@@ -216,7 +239,7 @@ class Meter
      */
     public function setOwnedBy($ownedBy)
     {
-        $this->ownedBy = $ownedBy;
+        $this->owned_by = $ownedBy;
     
         return $this;
     }
@@ -228,7 +251,250 @@ class Meter
      */
     public function getOwnedBy()
     {
-        return $this->ownedBy;
+        return $this->owned_by;
+    }
+
+    /**
+     * Set propertyId1
+     *
+     * @param string $propertyId1
+     *
+     * @return Meter
+     */
+    public function setPropertyId1($propertyId1)
+    {
+        $this->property_id_1 = $propertyId1;
+    
+        return $this;
+    }
+
+    /**
+     * Get propertyId1
+     *
+     * @return string
+     */
+    public function getPropertyId1()
+    {
+        return $this->property_id_1;
+    }
+
+    /**
+     * Set propertyId2
+     *
+     * @param string $propertyId2
+     *
+     * @return Meter
+     */
+    public function setPropertyId2($propertyId2)
+    {
+        $this->property_id_2 = $propertyId2;
+    
+        return $this;
+    }
+
+    /**
+     * Get propertyId2
+     *
+     * @return string
+     */
+    public function getPropertyId2()
+    {
+        return $this->property_id_2;
+    }
+
+    /**
+     * Set propertyId3
+     *
+     * @param string $propertyId3
+     *
+     * @return Meter
+     */
+    public function setPropertyId3($propertyId3)
+    {
+        $this->property_id_3 = $propertyId3;
+    
+        return $this;
+    }
+
+    /**
+     * Get propertyId3
+     *
+     * @return string
+     */
+    public function getPropertyId3()
+    {
+        return $this->property_id_3;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return Meter
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     *
+     * @return Meter
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->created_by = $createdBy;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->created_by;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     *
+     * @return Meter
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Set modifiedBy
+     *
+     * @param string $modifiedBy
+     *
+     * @return Meter
+     */
+    public function setModifiedBy($modifiedBy)
+    {
+        $this->modified_by = $modifiedBy;
+    
+        return $this;
+    }
+
+    /**
+     * Get modifiedBy
+     *
+     * @return string
+     */
+    public function getModifiedBy()
+    {
+        return $this->modified_by;
+    }
+
+    /**
+     * Set multiplier
+     *
+     * @param \int $multiplier
+     *
+     * @return Meter
+     */
+    public function setMultiplier($multiplier)
+    {
+        $this->multiplier = $multiplier;
+    
+        return $this;
+    }
+
+    /**
+     * Get multiplier
+     *
+     * @return \int
+     */
+    public function getMultiplier()
+    {
+        return $this->multiplier;
+    }
+
+
+
+    /**
+     * Set meterLocation
+     *
+     * @param string $meterLocation
+     *
+     * @return Meter
+     */
+    public function setMeterLocation($meterLocation)
+    {
+        $this->meter_location = $meterLocation;
+    
+        return $this;
+    }
+
+    /**
+     * Get meterLocation
+     *
+     * @return string
+     */
+    public function getMeterLocation()
+    {
+        return $this->meter_location;
+    }
+
+
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return Meter
+     */
+    public function setIsActive($isActive)
+    {
+        $this->is_active = $isActive;
+    
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->is_active;
     }
 }
-

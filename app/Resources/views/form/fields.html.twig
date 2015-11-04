@@ -1,17 +1,104 @@
 {# app/Resources/views/form/fields.html.twig #}
-{% block form_row %}
-    {% spaceless %}
-        <div class="form_row">
-            {{ form_label(form) }}
-            {{ form_errors(form) }}
-            {{ form_widget(form) }}
-        </div>
-    {% endspaceless %}
-{% endblock form_row %}
+{% block form_widget %}
+    <style type="text/css">
 
-{% block integer_widget %}
-    <div class="integer_widget">
-        {% set type = type|default('number') %}
-        {{ block('form_widget_simple') }}
-    </div>
+        .italic {
+            font-style:italic;
+            color:red!important;
+        }
+        .hover {
+            background-color:#EEE;
+            cursor:pointer;
+        }
+        .chk-header {
+            height:40px;
+        }
+        .chk-header h3 {
+            margin-top:0;
+            margin-left:10px;
+        }
+        .chk-body div {
+            margin-bottom:10px;
+        }
+        .chk-status {
+            background-color:#EEE;
+            float:left;
+            width:50px;
+            text-align:center;
+            border-right:solid 1px #DDD;
+            text-align:center;
+            font-size:10px;
+            text-transform:capitalize;
+            line-height:1.3em;
+            padding:5px;
+            margin:0px;
+            border-bottom:1px solid #CCC;
+        }
+        .section-body ul {
+            list-style-type: none;
+            margin:0;
+        }
+        #stakeholders ul {
+            list-style-type: none;
+            margin:0;
+        }
+
+        #stakeholders li {
+            list-style-image:none!important;
+        }
+        .section-body li {
+            list-style-image:none!important;
+            border-left:solid 3px #ccc;
+            margin-bottom:5px !important;
+            padding:5px;
+
+        }
+        .subsection-body li:nth-child(even), .section-body li:nth-child(even) {
+            background: #F0F0FF; border-left:solid 3px #DDD;
+        }
+        .subsection-body li:nth-child(odd), .section-body li:nth-child(odd)  {
+            background: #FFF; border-left:solid 3px #EEE;
+        }
+
+
+        .byline {
+            display:block;
+            text-align:right;
+            font-family:arial;
+            font-size:10px;
+            color:#111;
+        }
+        .section{
+            border-top:solid 1px #DAC245;
+            margin-bottom:15px;
+        }
+        .section.first {
+            border-top:none;
+        }
+        .section h3 {
+            margin-top:2px;
+            color:#111!important;
+            display:inline;
+        }
+        .subsection h3 {
+            font-size:90%;
+        }
+        .counts {
+            display:inline;
+            float:right;
+            padding-top:5px;
+        }
+        .section-body {
+            display:none;
+        }
+        .subsection {
+            border-top:solid 1px #F3ECC5;
+        }
+        .subsection-body {
+            display:none;
+        }
+        .datepicker {
+            width:95px;
+        }
+    </style>
 {% endblock %}

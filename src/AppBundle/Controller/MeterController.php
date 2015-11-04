@@ -37,17 +37,22 @@ class MeterController extends Controller
         $meter_read->setRate("$40");*/
 
         $form = $this->createFormBuilder($meter)
-            ->add('type', 'choice', array(
+            ->add('utility_type', 'choice', array(
                 'placeholder' => 'Choose an option',
                 'choices' => array('electrical' => 'Electrical', 'water' => 'Water', 'gas' => 'Gas', 'steam' => 'Steam'),
-                'required' => true
+                'required' => false
             ))
-            ->add('property', 'text')
-            ->add('property2', 'text')
-            ->add('property3', 'text')
-            ->add('size', 'text')
-            ->add('description', 'text')
-            ->add('ownedBy', 'text')
+            ->add('name', 'text', array('required' => false))
+            ->add('description', 'text', array('required' => false))
+            ->add('external_id', 'text', array('required' => false))
+            ->add('external_system_name', 'text', array('required' => false))
+            ->add('owned_by', 'text', array('required' => false))
+            ->add('property_id_1', 'text', array('label' => 'Property', 'required' => false))
+            ->add('property_id_2', 'text', array('label' => 'Property', 'required' => false))
+            ->add('property_id_3', 'text', array('label' => 'Property', 'required' => false))
+            ->add('multiplier', 'text', array('required' => false))
+            ->add('is_active', 'text', array('required' => true))
+            ->add('meter_location', 'text', array('required' => false))
             ->add('save', 'submit', array('label' => 'Save New Meter'))
             ->getForm();
 

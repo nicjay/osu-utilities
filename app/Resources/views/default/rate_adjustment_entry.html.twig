@@ -8,6 +8,10 @@
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
+   {# {{ form_label(form.invoiceMonth, "test name", {'label_attr': {'class': 'RateAdjustment'}}) }}
+    {{ form_widget(form.invoiceMonth, {'attr': {'class': 'RateAdjustment'}}) }}
+
+    {{ form_row(form.invoiceYear, {'label': 'foo'})}}#}
     {{ form_end(form) }}
 
 

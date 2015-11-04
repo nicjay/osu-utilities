@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="SQL Server (Microsoft) - OfficeAdmin@nws-sql3" uuid="4b68b19e-b942-4248-8d15-5cb41687a90c">
+      <secret-storage>master_key</secret-storage>
+      <domain-auth>true</domain-auth>
+      <schema-pattern>OfficeAdmin.*</schema-pattern>
+      <default-schemas>OfficeAdmin.*</default-schemas>
+    </data-source>
+  </component>
+</project>

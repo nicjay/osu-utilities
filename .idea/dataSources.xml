@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2817497003">
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - OfficeAdmin@nws-sql3" uuid="4b68b19e-b942-4248-8d15-5cb41687a90c">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://nws-sql3:1433;databaseName=OfficeAdmin</jdbc-url>
+    </data-source>
+  </component>
+</project>
