@@ -67,6 +67,8 @@ class MeterController extends Controller
         $form = $builder->getForm();
 
 
+        $meter->setCreated(new \DateTime());
+        $meter->setModified(new \DateTime());
 
 
 
@@ -185,6 +187,9 @@ class MeterController extends Controller
 
         $form = $builder->getForm();
 
+        $meterRead->setCreated(new \DateTime());
+        $meterRead->setModified(new \DateTime());
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -198,7 +203,7 @@ class MeterController extends Controller
 
             /*array_push($this->meter_reads, $data);*/
 
-            return $this->redirectToRoute('meterView');
+            return $this->redirectToRoute('meterViewSingle', array('meterId' => $data->getMeterId()));
 
         }
 
@@ -220,9 +225,13 @@ class MeterController extends Controller
 
         $meter = $repository->findOneById($meterId);
 
+
+
         $repositoryR = $this->getDoctrine()
             ->getRepository('AppBundle:MeterRead');
-        $meter_read_entries = $repositoryR->findBy(array('id' => $meterId));
+        $meter_read_entries = $repositoryR->findBy(array('meterId' => $meterId));
+
+        $logger = $this->get('logger')->info(var_export($meter_read_entries, true));
 
         return $this->render(
             'default/meter_view_single.html.twig', array(

@@ -24,8 +24,12 @@
                 <td>{{ entry.propertyId1 }}{{ entry.propertyId2 }}{{ entry.propertyId3 }}</td>
                 <td>{{ entry.description }}</td>
                 <td>{{ entry.createdBy }}</td>
-                <td>{{ entry.created }}</td>
-                <th>{{ entry.isActive }}</th>
+                <td>{{ entry.created|date('Y-m-d') }}</td>
+                {% if entry.isActive == 1  %}
+                    <td>Yes</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
             </tr>
     </table>
 
@@ -50,7 +54,7 @@
                     <td>{{ readentry.peak }}</td>
                     <td>{{ readentry.consumption }}</td>
                     <td>{{ readentry.totalDollars }}</td>
-                    <td>{{ readentry.modified }}</td>
+                    <td>{{ readentry.created|date('Y-m-d') }}</td>
                 </tr>
             {% endfor %}
 

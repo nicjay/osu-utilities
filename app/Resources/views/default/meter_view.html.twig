@@ -27,7 +27,7 @@
                 <br>{{ entry.propertyId3 }}</td>
             <td>{{ entry.description }}</td>
             <td>{{ entry.createdBy }}</td>
-            <td>{{ entry.created }}</td>
+            <td>{{ entry.created|date('Y-m-d') }}</td>
             {% if entry.isActive == 1  %}
                 <td>Yes</td>
             {% else %}
