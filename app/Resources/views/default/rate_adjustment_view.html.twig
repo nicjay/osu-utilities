@@ -2,7 +2,7 @@
 
 {% block body %}
 
-    <a href="/finance/rateAdjustment/add">Return to Form Entry</a>
+    <a href="{{ path('rateAdjustmentAdd') }}">Return to Form Entry</a>
     <h1>Rate Adjustments</h1><br>
 
     <table>
@@ -20,7 +20,7 @@
                 <td>{{ entry.invoiceYear }}</td>
                 <td>{{ entry.utilityType }}</td>
                 <td>{{ entry.description }}</td>
-                <td>{{ entry.startDate }}</td>
+                <td>{{ entry.startDate|date('Y-m-d') }}</td>
                 <td>[<a href="/">Edit</a>]</td>
                 <td>[<a href="/">Delete</a>]</td>
             </tr>

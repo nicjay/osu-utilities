@@ -1,5 +1,5 @@
 parameters:
-    database_host: Nws-sql3
+    database_host: OSU-MSSQL02
     database_port: 1433
     database_name: OfficeAdmin
     database_user: ~

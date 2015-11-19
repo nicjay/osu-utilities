@@ -10,25 +10,32 @@
             <th>ID</th>
             <th>Name</th>
             <th>Utility Type</th>
-          {#  <th>Properties</th>#}
+            <th>Properties</th>
             <th>Description</th>
-         {#   <th>Created By</th>#}
+            <th>Created By</th>
             <th>Created Date</th>
-          {#  <th>Active</th>#}
-            <th colspan="2">Actions</th>
+            <th>Active</th>
+            <th colspan="3">Actions</th>
         </tr>
         {% for entry in entries %}
         <tr>
             <td>{{ entry.id }}</td>
             <td>{{ entry.name }}</td>
             <td>{{ entry.utilityType }}</td>
-         {#   <td>{{ entry.property_id_1 }}{{ entry.property_id_2 }}{{ entry.property_id_3 }}</td>#}
+            <td>{{ entry.propertyId1 }}
+                <br>{{ entry.propertyId2 }}
+                <br>{{ entry.propertyId3 }}</td>
             <td>{{ entry.description }}</td>
-           {# <td>{{ entry.created_by }}</td>#}
+            <td>{{ entry.createdBy }}</td>
             <td>{{ entry.created }}</td>
-            {#<th>{{ entry.is_active }}</th>#}
-            <td>[<a href="/">Edit</a>]</td>
-            <td>[<a href="/">Delete</a>]</td>
+            {% if entry.isActive == 1  %}
+                <td>Yes</td>
+            {% else %}
+                <td>No</td>
+            {% endif %}
+            <td>[<a href="{{ path('meterViewSingle', {'meterId': entry.id}) }}">View</a>]</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
         {% endfor %}
     </table>

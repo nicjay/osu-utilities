@@ -4,8 +4,13 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+//use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
+use Symfony\Component\Form\ChoiceList\ArrayChoiceList;
 
 use AppBundle\Entity\Meter;
 use AppBundle\Entity\MeterRead;
@@ -30,33 +35,47 @@ class MeterController extends Controller
      */
     public function newMeter(Request $request)
     {
-
+        $this->get("logger")->info("hello meter");
 
         $meter = new Meter();
 /*        $meter_read->setId(19);
         $meter_read->setRate("$40");*/
 
-        $form = $this->createFormBuilder($meter)
-            ->add('utility_type', 'choice', array(
+
+        $builder = $this->createFormBuilder($meter);
+
+        $builder
+            ->add('utilityType', 'choice', array(
                 'placeholder' => 'Choose an option',
                 'choices' => array('electrical' => 'Electrical', 'water' => 'Water', 'gas' => 'Gas', 'steam' => 'Steam'),
                 'required' => false
             ))
-            ->add('name', 'text', array('required' => false))
-            ->add('description', 'text', array('required' => false))
-            ->add('external_id', 'text', array('required' => false))
-            ->add('external_system_name', 'text', array('required' => false))
-            ->add('owned_by', 'text', array('required' => false))
-            ->add('property_id_1', 'text', array('label' => 'Property', 'required' => false))
-            ->add('property_id_2', 'text', array('label' => 'Property', 'required' => false))
-            ->add('property_id_3', 'text', array('label' => 'Property', 'required' => false))
-            ->add('multiplier', 'text', array('required' => false))
-            ->add('is_active', 'text', array('required' => true))
-            ->add('meter_location', 'text', array('required' => false))
-            ->add('save', 'submit', array('label' => 'Save New Meter'))
-            ->getForm();
+            ->add('name', 'text', array('label' => 'Meter Name:', 'required' => false))
+            ->add('description', 'text', array('label' => 'Description:', 'required' => false))
+            ->add('externalId', 'text', array('label' => 'External ID:', 'required' => false))
+            ->add('externalSystemName', 'text', array('label' => 'External System Name:', 'required' => false))
+            ->add('ownedBy', 'text', array('label' => 'Owner:', 'required' => false))
+            ->add('propertyId1', 'text', array('label' => 'Property:', 'required' => false))
+            ->add('propertyId2', 'text', array('label' => 'Property 2:', 'required' => false))
+            ->add('propertyId3', 'text', array('label' => 'Property 3:', 'required' => false))
+            ->add('multiplier', 'text', array('label' => 'Multiplier:', 'required' => false))
+            ->add('isActive', 'choice', array('label' => 'Active?', 'required' => true, 'choices' => array(true => 'Yes', false => 'No'),))
+            ->add('meterLocation', 'text', array('label' => 'Location:', 'required' => false))
+            ->add('save', 'submit', array('label' => 'Submit New Meter'));
+
+
+        $form = $builder->getForm();
+
+
+
+
+
+       /* $meter->setCreated(date('Y-m-d H:i:s'));*/
 
         $form->handleRequest($request);
+
+
+
 
         if ($form->isValid()) {
             // perform some action, such as saving the task to the database
@@ -99,26 +118,128 @@ class MeterController extends Controller
         $meter_entries = $query->getResult();
 
 
-        /*  $meter_read = $query->setMaxResults(1)->getOneOrNullResult();*/
-
-        /* return new Response("Entry successfully submitted ... {$meter_read->getRate()}");*/
-
-        //List testing
-      /*  $meter_entry = new Meter();
-        $meter_entry->setType("Electrical");
-        $meter_entry->setProperty("Oak Creek");
-        $meter_entry->setProperty2("Reser Stadium");
-        $meter_entry->setSize("1M^2");
-        $meter_entry->setDescription("This is a description of a meter.");
-        $meter_entry->setOwnedBy("Nick Jordan");
-
-        $meter_entries = array($meter_entry, $meter_entry, $meter_entry);*/
-
-
         return $this->render(
             'default/meter_view.html.twig', array(
             'entries' => $meter_entries,
         ));
 
     }
+
+    /**
+     * @Route("/meter/read/add", name="meterReadAdd")
+     */
+    public function newMeterRead(Request $request)
+    {
+
+        $meterRead = new MeterRead();
+
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Meter');
+
+        $meters = $repository->findAll();
+
+
+
+
+      /*  $meterIds = array();
+        $meterNames = array();*/
+
+        $meterChoices = array();
+
+        $logger = $this->get('logger');
+      //  $logger = $this->get('logger')->info(var_export($meterIds, true));
+
+        foreach ($meters as $meter){
+            $meterChoices[$meter->getId().' '.$meter->getName()] = $meter->getId();
+
+           /* array_push($meterIds, $meter->getId());
+            array_push($meterNames, $meter->getId().' '.$meter->getName());*/
+
+        }
+      //  $logger = $this->get('logger')->info(var_export($meterIds, true));
+        $builder = $this->createFormBuilder($meterRead);
+
+        $builder
+            ->add('meterId', 'choice', array(
+                'choices' => $meterChoices,
+                'choices_as_values' => true,
+                'placeholder' => 'Choose a Meter ID',
+                'required'=>true))
+            ->add('readDate', 'text', array('label' => 'Read Date:', 'required' => false, 'attr'=> array('class'=>'datepicker')))
+            ->add('meterRead', 'number', array('scale'=>2, 'required' => false))
+            ->add('peak', 'number', array('scale'=>2, 'required' => false))
+            ->add('consumption', 'number', array('scale'=>2, 'required' => false))
+            ->add('totalDollars', 'money', array('required' => false))
+            ->add('save', 'submit', array('label' => 'Submit Meter Read'))
+            ->getForm();
+
+        //Convert form date string to DateTime on submit
+        $builder->get('readDate')->addModelTransformer(new CallbackTransformer(
+            function ($originalDescription) {
+                return $originalDescription;
+            },
+            function ($submittedDescription) {
+                return date_create_from_format('m/d/Y', $submittedDescription);
+            }
+        ));
+
+        $form = $builder->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            // perform some action, such as saving the task to the database
+
+            $data = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($meterRead);
+            $em->flush();
+
+            /*array_push($this->meter_reads, $data);*/
+
+            return $this->redirectToRoute('meterView');
+
+        }
+
+        return $this->render(
+            'default/meter_read_entry.html.twig', array(
+            'form' => $form->createView(),
+        ));
+
+    }
+
+
+    /**
+     * @Route("meter/view/{meterId}", name="meterViewSingle")
+     */
+    public function viewMeterSingle($meterId)
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Meter');
+
+        $meter = $repository->findOneById($meterId);
+
+        $repositoryR = $this->getDoctrine()
+            ->getRepository('AppBundle:MeterRead');
+        $meter_read_entries = $repositoryR->findBy(array('id' => $meterId));
+
+        return $this->render(
+            'default/meter_view_single.html.twig', array(
+            'entry' => $meter,
+            'readentries' => $meter_read_entries,
+        ));
+
+    }
+
+    /**
+     * @Route("/meter/note/add", name="meterNoteAdd")
+     */
+    public function newMeterNote(Request $request)
+    {
+
+        return $this->render('default/meter_note_entry.html.twig');
+
+    }
+
 }

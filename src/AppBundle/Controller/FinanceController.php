@@ -6,6 +6,7 @@ use AppBundle\Entity\MeterToIndex;
 use AppBundle\Entity\RateAdjustment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -89,7 +90,6 @@ class FinanceController extends Controller
     }
 
 
-
     /**
      * @Route("/finance/rateAdjustment/add", name="rateAdjustmentAdd")
      */
@@ -97,33 +97,53 @@ class FinanceController extends Controller
     {
         $rate_adjustment = new RateAdjustment();
 
-        $form = $this->createFormBuilder($rate_adjustment)
-            ->add('invoiceMonth', 'choice', array('choices' => range(1, 12)))
-            ->add('invoiceYear', 'choice', array('choices' => range(date('Y'), Date('Y') - 6)))
-            ->add('utilityType', 'text')
-            ->add('description', 'text')
-            ->add('startDate', 'date')
-            ->add('save', 'submit', array('label' => 'Add Rate Adjustment'))
-            ->getForm();
+        $builder = $this->createFormBuilder($rate_adjustment);
+
+        $builder
+            ->add('monthAndYear', 'text', array('label' => 'Invoice Month/Year:', 'required' => false, 'attr'=> array('class'=>'monthpicker')))
+            ->add('utilityType', 'text', array('label' => 'Utility Type:', 'required' => false))
+            ->add('description', 'text', array('label' => 'Description:', 'required' => false))
+            ->add('startDate', 'text', array('label' => 'Start Date:', 'required' => false, 'attr'=> array('class'=>'datepicker')))
+            ->add('save', 'submit', array('label' => 'Add Rate Adjustment'));
+
+        //Convert form date string to DateTime on submit
+        $builder->get('startDate')->addModelTransformer(new CallbackTransformer(
+            function ($originalDescription) {
+                return $originalDescription;
+            },
+            function ($submittedDescription) {
+                return date_create_from_format('m/d/Y', $submittedDescription);
+            }
+        ));
+
+        $form = $builder->getForm();
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            // perform some action, such as saving the task to the database
 
+        if ($form->isValid()) {
+            // Save the task to the database
+
+            /* @var $data RateAdjustment */
             $data = $form->getData();
 
-            /*array_push($this->meter_reads, $data);*/
+            $monthAndYear = date_parse_from_format('m/Y', $data->getMonthAndYear());
+            $month = $monthAndYear["month"];
+            $year = $monthAndYear["year"];
+            $rate_adjustment->setInvoiceMonth($month);
+            $rate_adjustment->setInvoiceYear($year);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($data);
+            $em->flush();
 
             return $this->redirectToRoute('rateAdjustmentView');
-
         }
 
         return $this->render(
             'default/rate_adjustment_entry.html.twig', array(
             'form' => $form->createView(),
         ));
-
 
     }
 
@@ -132,21 +152,16 @@ class FinanceController extends Controller
      */
     public function viewRateAdjustment(Request $request){
 
-        // for list testing
-        $rate_adjustment = new RateAdjustment();
+        //Get from database
+        $repository = $this->getDoctrine()->getRepository('AppBundle:RateAdjustment');
 
-        $rate_adjustment->setInvoiceMonth(2);
-        $rate_adjustment->setInvoiceYear(2015);
-        $rate_adjustment->setUtilityType("Electrical");
-        $rate_adjustment->setDescription("A description of this rate adjustment.");
-        $rate_adjustment->setStartDate("1/1/2015");
+        $query = $repository->createQueryBuilder('m')->getQuery();
 
-        $rate_adjustments = array($rate_adjustment, $rate_adjustment, $rate_adjustment, $rate_adjustment);
+        $rate_adjustment_entries = $query->getResult();
 
-            //
         return $this->render(
             'default/rate_adjustment_view.html.twig', array(
-            'entries' => $rate_adjustments,
+            'entries' => $rate_adjustment_entries,
         ));
     }
 

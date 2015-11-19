@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="meter_read")
+ * @ORM\Table(name="utility_meter_reads_dev", schema="sym")
  */
 class MeterRead
 {
@@ -25,19 +25,44 @@ class MeterRead
     protected $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(name="meter_id", type="integer", nullable=false)
      */
-    protected $date;
+    protected $meterId;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(name="read_date", type="datetime", nullable=true)
      */
-    protected $rate;
+    protected $readDate;
 
     /**
-     * @ORM\Column(type="decimal", scale=2)
+     * @ORM\Column(name="meter_read", type="decimal", precision=16, scale=2, nullable=true)
      */
-    protected $kilowatts;
+    protected $meterRead;
+
+    /**
+     * @ORM\Column(name="peak", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    protected $peak;
+
+    /**
+     * @ORM\Column(name="consumption", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    protected $consumption;
+
+    /**
+     * @ORM\Column(name="total_dollars", type="decimal", precision=16, scale=2, nullable=true)
+     */
+    protected $totalDollars;
+
+    /**
+     * @ORM\Column(type="datetime", scale=8, nullable=true)
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="datetime", scale=8, nullable=true)
+     */
+    private $modified;
 
 
     /**
@@ -51,75 +76,194 @@ class MeterRead
     }
 
     /**
-     * Set date
+     * Set meterId
      *
-     * @param \DateTime $date
+     * @param integer $meterId
      *
      * @return MeterRead
      */
-    public function setDate($date)
+    public function setMeterId($meterId)
     {
-        $this->date = $date;
+        $this->meterId = $meterId;
     
         return $this;
     }
 
     /**
-     * Get date
+     * Get meterId
+     *
+     * @return integer
+     */
+    public function getMeterId()
+    {
+        return $this->meterId;
+    }
+
+    /**
+     * Set readDate
+     *
+     * @param \DateTime $readDate
+     *
+     * @return MeterRead
+     */
+    public function setReadDate($readDate)
+    {
+        $this->readDate = $readDate;
+    
+        return $this;
+    }
+
+    /**
+     * Get readDate
      *
      * @return \DateTime
      */
-    public function getDate()
+    public function getReadDate()
     {
-        return $this->date;
+        return $this->readDate;
     }
 
     /**
-     * Set rate
+     * Set meterRead
      *
-     * @param string $rate
+     * @param string $meterRead
      *
      * @return MeterRead
      */
-    public function setRate($rate)
+    public function setMeterRead($meterRead)
     {
-        $this->rate = $rate;
+        $this->meterRead = $meterRead;
     
         return $this;
     }
 
     /**
-     * Get rate
+     * Get meterRead
      *
      * @return string
      */
-    public function getRate()
+    public function getMeterRead()
     {
-        return $this->rate;
+        return $this->meterRead;
     }
 
     /**
-     * Set kilowatts
+     * Set peak
      *
-     * @param string $kilowatts
+     * @param string $peak
      *
      * @return MeterRead
      */
-    public function setKilowatts($kilowatts)
+    public function setPeak($peak)
     {
-        $this->kilowatts = $kilowatts;
+        $this->peak = $peak;
     
         return $this;
     }
 
     /**
-     * Get kilowatts
+     * Get peak
      *
      * @return string
      */
-    public function getKilowatts()
+    public function getPeak()
     {
-        return $this->kilowatts;
+        return $this->peak;
     }
 
+    /**
+     * Set consumption
+     *
+     * @param string $consumption
+     *
+     * @return MeterRead
+     */
+    public function setConsumption($consumption)
+    {
+        $this->consumption = $consumption;
+    
+        return $this;
+    }
+
+    /**
+     * Get consumption
+     *
+     * @return string
+     */
+    public function getConsumption()
+    {
+        return $this->consumption;
+    }
+
+    /**
+     * Set totalDollars
+     *
+     * @param string $totalDollars
+     *
+     * @return MeterRead
+     */
+    public function setTotalDollars($totalDollars)
+    {
+        $this->totalDollars = $totalDollars;
+    
+        return $this;
+    }
+
+    /**
+     * Get totalDollars
+     *
+     * @return string
+     */
+    public function getTotalDollars()
+    {
+        return $this->totalDollars;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     *
+     * @return MeterRead
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     *
+     * @return MeterRead
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
 }

@@ -1,21 +1,3 @@
-{#
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
-#}
-
-
 <!DOCTYPE HTML>
 
 <head>
@@ -23,7 +5,7 @@
     <link rel="shortcut icon" href="http://fa.oregonstate.edu/sites/all/themes/doug_fir/favicon.ico" type="image/vnd.microsoft.icon" />
     <title>Utility Management Project</title>
 
-        {% stylesheets
+      {#  {% stylesheets
             'css/drupal.css'
             'ui/standard/1.0/base.css'
             'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'
@@ -37,22 +19,25 @@
             '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'
         filter='cssrewrite' output='css/compiled/app.css' %}
         <link rel="stylesheet" type="text/css" href="{{ asset_url }}" media="all" />
-        {% endstylesheets %}
-
+        {% endstylesheets %}#}
     <!-- CSS -->
 
-      {#  <link rel="stylesheet" href="css/drupal.css">
-        <link rel="stylesheet" href="ui/standard/1.0/base.css">
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-        <link rel="stylesheet" href="css/jquery.multiselect.css" />
-        <link rel="stylesheet" href="css/base.css"/>
-        <link rel="stylesheet" href="css/portal.css" />
-        <link rel="stylesheet" href="css/forms.css" />
-        <link rel="stylesheet" href="ui/css/drupal.css" />
-        <link rel="stylesheet" href="ui/js/timepicker/jquery.timepicker.css" />
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Gudea:400,400italic,700" />
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
-#}
+    <!-- CSS -->
+    <style type="text/css" media="all">
+        @import url("http://apps-webdev.campusops.oregonstate.edu/jordann/portal/css/drupal.css");
+        @import url("http://apps-webdev.campusops.oregonstate.edu/jordann/portal/ui/standard/1.0/base.css");
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <style type="text/css" media="all">
+        @import url('http://apps-webdev.campusops.oregonstate.edu/jordann/portal/css/jquery.multiselect.css');
+        @import url("http://apps-webdev.campusops.oregonstate.edu/jordann/portal/css/base.css");
+        @import url("http://apps-webdev.campusops.oregonstate.edu/jordann/portal/css/portal.css");
+        @import url("http://apps-webdev.campusops.oregonstate.edu/jordann/portal/css/forms.css");
+        @import url("http://apps-webdev.campusops.oregonstate.edu/jordann/portal/ui/css/drupal.css");
+        @import url('http://apps-webdev.campusops.oregonstate.edu/jordann/portal/ui/js/timepicker/jquery.timepicker.css');
+    </style>
+    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic,700' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 </head>
 
@@ -101,19 +86,19 @@
             <div id="block-nice-menus-1" class="block block-nice-menus">
 
                 <div class="content">
-                    <ul class="nice-menu nice-menu-down menu-path-front"  id="nice-menu-1"><li class=" first"><a href="/">Home</a></li>
-                        <li class=" menuparent"><a href="/meter/add">Sustainability</a><ul id="nice-menu-2" class="menu-path-front">
-                                <li class=""><a href="/meter/add">Add Meter</a></li>
-                                <li class=""><a href="/meter/view">View Meters</a></li>
-                                <li class=""><a href="/meter/note/add">Add Meter Note</a></li>
-                                <li class=" last"><a href="/meter/read/add">Add Meter Read</a></li>
+                    <ul class="nice-menu nice-menu-down menu-path-front"  id="nice-menu-1"><li class=" first"><a href="{{ path("homepage") }}">Home</a></li>
+                        <li class=" menuparent"><a href="{{ path("meterAdd") }}">Sustainability</a><ul id="nice-menu-2" class="menu-path-front">
+                                <li class=""><a href="{{ path("meterAdd") }}">Add Meter</a></li>
+                                <li class=""><a href="{{ path("meterView") }}">View Meters</a></li>
+                                <li class=""><a href="{{ path("meterNoteAdd") }}">Add Meter Note</a></li>
+                                <li class=" last"><a href="{{ path("meterReadAdd") }}">Add Meter Read</a></li>
                             </ul>
                         </li>
-                        <li class=" menuparent"><a href="/finance">Finance</a><ul id="nice-menu-2" class="menu-path-front">
-                                <li class=""><a href="/finance/meterToIndex/add">Add Meter to Index</a></li>
-                                <li class=""><a href="/finance/meterToIndex/view">View Meter to Index</a></li>
-                                <li class=""><a href="/finance/rateAdjustment/add">Add Rate Adjustment</a></li>
-                                <li class=""><a href="/finance/rateAdjustment/view">View Rate Adjustments</a></li>
+                        <li class=" menuparent"><a href="{{ path("finance") }}">Finance</a><ul id="nice-menu-2" class="menu-path-front">
+                                <li class=""><a href="{{ path("meterToIndexAdd") }}">Add Meter to Index</a></li>
+                                <li class=""><a href="{{ path("meterToIndexView") }}">View Meter to Index</a></li>
+                                <li class=""><a href="{{ path("rateAdjustmentAdd") }}">Add Rate Adjustment</a></li>
+                                <li class=""><a href="{{ path("rateAdjustmentView") }}">View Rate Adjustments</a></li>
                             </ul>
                         </li>
                         <li class=" menuparent"><a href="/invoice">Invoices</a><ul id="nice-menu-2" class="menu-path-front">
@@ -179,6 +164,8 @@
         </div>
     </div>
 </div>
+
+</body>
 
 <script style="display:none;">
     $(document).ready(function(){

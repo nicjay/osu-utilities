@@ -1,18 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form 'form/fields.html.twig' %}
 
 {% block body %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
     <h1>Rate Adjustment Entry</h1><br>
 
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-   {# {{ form_label(form.invoiceMonth, "test name", {'label_attr': {'class': 'RateAdjustment'}}) }}
-    {{ form_widget(form.invoiceMonth, {'attr': {'class': 'RateAdjustment'}}) }}
+    <div class="form-container">
+        {{ form_start(form) }}
+        {% for child in form.children %}
+            {% if loop.index0 % 2 == 0 %}
+                <div class="even">  {{ form_row(child) }} </div>
+            {% else %}
+                <div class="odd">  {{ form_row(child) }} </div>
+            {% endif %}
+        {% endfor %}
+        {{ form_end(form) }}
+    </div>
 
-    {{ form_row(form.invoiceYear, {'label': 'foo'})}}#}
-    {{ form_end(form) }}
+    <script>
+        $( document ).ready(function() {
 
+            $(".datepicker").datepicker({
+                showOn: "both",
+                buttonImage: "http://apps-webdev.campusops.oregonstate.edu/jordann/portal/img/calendar.png",
+                minDate: -60,
+                dateFormat: 'mm/dd/yy'
+            });
+
+            $(".monthpicker").datepicker({
+                dateFormat: 'mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+
+                onClose: function(dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).val($.datepicker.formatDate('mm/yy', new Date(year, month, 1)));
+                }
+            });
+
+            $(".monthpicker").focus(function () {
+                $(".ui-datepicker-calendar").hide();
+                $("#ui-datepicker-div").position({
+                    my: "center top",
+                    at: "center bottom",
+                    of: $(this)
+                });
+            });
+
+
+        });
+    </script>
 
 {% endblock %}
