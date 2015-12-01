@@ -15,17 +15,17 @@
 
             {% if loop.index0 % 2 == 0 %}
                 <div class="even">
-                    {#{{ form_row(child) }}#}
-                    {{ form_errors(child) }}
+                    {{ form_row(child) }}
+                    {#{{ form_errors(child) }}
                     {{ form_label(child) }}
-                    {{ form_widget(child) }}
+                    {{ form_widget(child) }}#}
                 </div>
             {% else %}
                 <div class="odd">
-                    {#{{ form_row(child) }}#}
-                    {{ form_errors(child) }}
+                    {{ form_row(child) }}
+                   {# {{ form_errors(child) }}
                     {{ form_label(child) }}
-                    {{ form_widget(child) }}
+                    {{ form_widget(child) }}#}
 
                 </div>
             {% endif %}
