@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form _self %}
 
 {% block body %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -9,18 +10,34 @@
 
     <div class="form-container">
         {{ form_start(form) }}
+
         {% for child in form.children %}
+
             {% if loop.index0 % 2 == 0 %}
-                <div class="even">  {{ form_row(child) }} </div>
+                <div class="even">
+                    {#{{ form_row(child) }}#}
+                    {{ form_errors(child) }}
+                    {{ form_label(child) }}
+                    {{ form_widget(child) }}
+                </div>
             {% else %}
-                <div class="odd">  {{ form_row(child) }} </div>
+                <div class="odd">
+                    {#{{ form_row(child) }}#}
+                    {{ form_errors(child) }}
+                    {{ form_label(child) }}
+                    {{ form_widget(child) }}
+
+                </div>
             {% endif %}
+ 
         {% endfor %}
         {{ form_end(form) }}
     </div>
 
     <script>
-        $( document ).ready(function() {
+
+
+        $(document).ready(function () {
 
             $(".datepicker").datepicker({
                 showOn: "both",
@@ -35,7 +52,7 @@
                 changeYear: true,
                 showButtonPanel: true,
 
-                onClose: function(dateText, inst) {
+                onClose: function (dateText, inst) {
                     var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
                     var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
                     $(this).val($.datepicker.formatDate('mm/yy', new Date(year, month, 1)));
@@ -56,3 +73,16 @@
     </script>
 
 {% endblock %}
+
+{% block form_errors %}
+    {% spaceless %}
+        {% if errors|length > 0 %}
+            <ul>
+                {% for error in errors %}
+
+                    <li><p style="color:#ff0033">{{ error.message }}</p></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_errors %}

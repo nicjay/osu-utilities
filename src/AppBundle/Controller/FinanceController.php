@@ -100,11 +100,21 @@ class FinanceController extends Controller
         $builder = $this->createFormBuilder($rate_adjustment);
 
         $builder
-            ->add('monthAndYear', 'text', array('label' => 'Invoice Month/Year:', 'required' => false, 'attr'=> array('class'=>'monthpicker')))
+            ->add('monthAndYear', 'text', array('label' => 'Invoice Month/Year:', 'required' => false, 'error_bubbling' => false,  'attr'=> array('class'=>'monthpicker')))
             ->add('utilityType', 'text', array('label' => 'Utility Type:', 'required' => false))
             ->add('description', 'text', array('label' => 'Description:', 'required' => false))
-            ->add('startDate', 'text', array('label' => 'Start Date:', 'required' => false, 'attr'=> array('class'=>'datepicker')))
+            ->add('startDate', 'text', array('label' => 'Start Date:', 'required' => false, 'error_bubbling' => false, 'attr'=> array('class'=>'datepicker')))
             ->add('save', 'submit', array('label' => 'Add Rate Adjustment'));
+
+        //Convert form date string to DateTime on submit
+        $builder->get('monthAndYear')->addModelTransformer(new CallbackTransformer(
+            function ($originalDescription) {
+                return $originalDescription;
+            },
+            function ($submittedDescription) {
+                return date_create_from_format('m/Y', $submittedDescription);
+            }
+        ));
 
         //Convert form date string to DateTime on submit
         $builder->get('startDate')->addModelTransformer(new CallbackTransformer(
@@ -127,9 +137,12 @@ class FinanceController extends Controller
             /* @var $data RateAdjustment */
             $data = $form->getData();
 
-            $monthAndYear = date_parse_from_format('m/Y', $data->getMonthAndYear());
-            $month = $monthAndYear["month"];
-            $year = $monthAndYear["year"];
+           // $monthAndYear = date_parse_from_format('m/Y', $data->getMonthAndYear());
+            $monthAndYear = $data->getMonthAndYear();
+   /*         $month = $monthAndYear["month"];
+            $year = $monthAndYear["year"];*/
+            $month = $monthAndYear->format('m');
+            $year = $monthAndYear->format('y');
             $rate_adjustment->setInvoiceMonth($month);
             $rate_adjustment->setInvoiceYear($year);
 

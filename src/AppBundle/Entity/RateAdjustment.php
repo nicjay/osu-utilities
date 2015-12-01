@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,7 +19,9 @@ class RateAdjustment
      */
     private $id;
 
-    //Custom field for form entry only
+    /**
+     * @Assert\DateTime()
+     */
     private $monthAndYear;
 
     /**
@@ -32,16 +35,19 @@ class RateAdjustment
     private $invoiceYear;
 
     /**
+     * @Assert\Type(type="string")
      * @ORM\Column(type="string", length=128)
      */
     private $utilityType;
 
     /**
+     * @Assert\Type(type="string")
      * @ORM\Column(type="string", length=128)
      */
     private $description;
 
     /**
+     * @Assert\DateTime()
      * @ORM\Column(type="datetime")
      */
     private $startDate;
