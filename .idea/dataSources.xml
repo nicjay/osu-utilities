@@ -5,7 +5,6 @@
       <driver-ref>sqlserver.ms</driver-ref>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://nws-sql3:1433;databaseName=OfficeAdmin</jdbc-url>
-      <libraries />
     </data-source>
   </component>
 </project>
